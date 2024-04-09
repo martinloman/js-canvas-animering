@@ -6,53 +6,56 @@ canvas.style.height = "100%"
 
 let c = canvas.getContext("2d")
 
-// Startläge kvadraterna
+// Startläge kvadrat
 // Slumpas fram med lite marginal från kanterna
 // (minst 200 px till vänstermarginal, max 20 % av bredd till högermarginal)
-let xPosRed = Math.floor(Math.random() * (0.8 * canvas.width - 200) + 200)
-let yPosRed = Math.floor(Math.random() * (0.8 * canvas.height - 200) + 200)
+let xPos = Math.floor(Math.random() * (0.8 * canvas.width - 200) + 200)
+let yPos = Math.floor(Math.random() * (0.8 * canvas.height - 200) + 200)
 
-// Hastighet för respektive kvadrat
+// Hastighet för kvadrat
 let speed = 5
 let xSpeed = 0
 let ySpeed = 0
 
-// Sidlängd för respektive kvadrat
-const sizeRed = 30
-
-// Variabler som håller reda på respektive kvadrats mittkoordinat
-let xCenterRed = (xPosRed + xPosRed + sizeRed) / 2
-let yCenterRed = (yPosRed + yPosRed + sizeRed) / 2
+// Sidlängd för kvadrat
+const size = 30
 
 // Reagerar på tangenttryckningar
-// Varje tangent har sin keycode, se https://keycode.info
+// Varje tangent har sin keycode, se https://keycosde.info
+// När en tangent trycks ned så sätts hastigheten i x- eller y-led.
 document.onkeydown = function (e) {
+  console.log(e)
   const key = e.key
   switch (key) {
     case "w":
+      // w-tangenten ska göra att kvadraten rör sig uppåt (negativ y-led).
       console.log("Going up")
       ySpeed = -speed
       break
     case "a":
+      // a-tangenten ska göra att kvadraten rör sig åt vänster (negativ x-led).
       console.log("Going left")
       xSpeed = -speed
       break
     case "s":
+      // s-tangenten ska göra att kvadraten rör sig nedåt (positiv y-led).
       console.log("Going down")
       ySpeed = speed
       break
     case "d":
+      // d-tangenten ska göra att kvadraten rör sig åt höger (positiv x-led).
       console.log("Going right")
       xSpeed = speed
       break
     case " ": // Mellanslag
       console.log(`Mellanslag`)
       break
-    default:
+    default: // alla övriga tangenter
       console.log("Tangenten används inte")
   }
 }
 
+// När en tangent släpps upp så vill vi stoppa rörelsen i den riktningen.
 document.onkeyup = function (e) {
   const key = e.key
   switch (key) {
@@ -75,20 +78,20 @@ document.onkeyup = function (e) {
   }
 }
 
-// Ritar upp kvadraterna
-function drawRects() {
+// Animeringsloopen
+function animate() {
   // Rensar gammalt visuellt innehåll
   c.clearRect(0, 0, canvas.width, canvas.height)
 
   // Sätt nya läget.
-  xPosRed += xSpeed
-  yPosRed += ySpeed
+  xPos += xSpeed
+  yPos += ySpeed
 
   // Den röda kvadraten ritas i sitt nya läge
   c.fillStyle = "red"
-  c.fillRect(xPosRed, yPosRed, sizeRed, sizeRed)
+  c.fillRect(xPos, yPos, size, size)
 
-  window.requestAnimationFrame(drawRects)
+  window.requestAnimationFrame(animate)
 }
 
-window.requestAnimationFrame(drawRects)
+window.requestAnimationFrame(animate)
