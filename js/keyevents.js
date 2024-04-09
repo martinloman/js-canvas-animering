@@ -4,8 +4,6 @@ canvas.height = window.innerHeight
 canvas.style.width = "100%"
 canvas.style.height = "100%"
 
-let c = canvas.getContext("2d")
-
 // Startläge kvadrat
 // Slumpas fram med lite marginal från kanterna
 // (minst 200 px till vänstermarginal, max 20 % av bredd till högermarginal)
@@ -24,7 +22,7 @@ const size = 30
 // Varje tangent har sin keycode, se https://keycosde.info
 // När en tangent trycks ned så sätts hastigheten i x- eller y-led.
 document.onkeydown = function (e) {
-  console.log(e)
+  console.log(e) //Inparametern e innehåller ett event-objekt med information om eventet.
   const key = e.key
   switch (key) {
     case "w":
@@ -78,18 +76,20 @@ document.onkeyup = function (e) {
   }
 }
 
+let ctx = canvas.getContext("2d")
+
 // Animeringsloopen
 function animate() {
   // Rensar gammalt visuellt innehåll
-  c.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // Sätt nya läget.
   xPos += xSpeed
   yPos += ySpeed
 
   // Den röda kvadraten ritas i sitt nya läge
-  c.fillStyle = "red"
-  c.fillRect(xPos, yPos, size, size)
+  ctx.fillStyle = "red"
+  ctx.fillRect(xPos, yPos, size, size)
 
   window.requestAnimationFrame(animate)
 }
