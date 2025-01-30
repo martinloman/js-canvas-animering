@@ -11,8 +11,8 @@ let square = {
   x: 10,
   y: 10,
   side: 40,
-  xSpeed: 1, //hastighet i x-led
-  ySpeed: 1, //hastighet i y-led
+  xSpeed: 5, //hastighet i x-led
+  ySpeed: 5, //hastighet i y-led
 }
 
 function draw() {
