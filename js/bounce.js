@@ -69,20 +69,16 @@ function drawRects() {
 function checkBounce() {
   if (xPosRed < 0 || xPosRed > canvas.width - sizeRed) {
     dxRed = -dxRed
-    redBounces += 1
   }
 
   if (xPosYellow < 0 || xPosYellow > canvas.width - sizeYellow) {
     dxYellow = -dxYellow
-    yellowBounces += 1
   }
 
   if (yPosRed < 0 || yPosRed > canvas.height - sizeRed) {
     dyRed = -dyRed
-    redBounces += 1
   }
   if (yPosYellow < 0 || yPosYellow > canvas.height - sizeYellow) {
     dyYellow = -dyYellow
-    yellowBounces += 1
   }
 }
