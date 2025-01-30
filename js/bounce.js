@@ -31,19 +31,10 @@ let yCenterRed = (yPosRed + yPosRed + sizeRed) / 2
 let xCenterYellow = (xPosYellow + xPosYellow + sizeYellow) / 2
 let yCenterYellow = (yPosYellow + yPosYellow + sizeYellow) / 2
 
-// Variabler som håller koll på antalet studsar
-let redBounces = 0
-let yellowBounces = 0
-
 window.requestAnimationFrame(drawRects)
 
 // Ritar upp kvadraterna
 function drawRects() {
-  if (redBounces >= 100 || yellowBounces >= 100) {
-    clearInterval(myTimer)
-    alert("Nog med studsar!\nNu vet du hur en animering avslutas.")
-  }
-
   // Rensar gammalt visuellt innehåll
   c.clearRect(0, 0, canvas.width, canvas.height)
 
