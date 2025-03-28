@@ -55,10 +55,10 @@ let red = new BouncingSquare(300, 100, 30, "red", canvas)
 // Variabeln squares är en array som innehåller alla kvadrater som ska ritas upp.
 let squares = [green, yellow, red]
 
-window.requestAnimationFrame(drawRects)
+window.requestAnimationFrame(drawRect)
 
 // Ritar upp kvadraterna
-function drawRects() {
+function drawRect() {
   // Rensar gammalt visuellt innehåll
   c.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -69,7 +69,7 @@ function drawRects() {
     square.draw()
   })
 
-  requestAnimationFrame(drawRects)
+  requestAnimationFrame(drawRect)
 }
 
 /**

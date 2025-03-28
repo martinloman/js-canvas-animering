@@ -31,15 +31,15 @@ let yCenterRed = (yPosRed + yPosRed + sizeRed) / 2
 let xCenterYellow = (xPosYellow + xPosYellow + sizeYellow) / 2
 let yCenterYellow = (yPosYellow + yPosYellow + sizeYellow) / 2
 
-window.requestAnimationFrame(drawRects)
+window.requestAnimationFrame(drawRect)
 
 // Ritar upp kvadraterna
-function drawRects() {
+function drawRect() {
   // Rensar gammalt visuellt innehåll
   c.clearRect(0, 0, canvas.width, canvas.height)
 
   // Kolla om riktningsändring ska göras pga kant
-  checkBounce()
+  isOnGround()
 
   // Beräkna nytt läge
   xPosRed += dxRed
@@ -62,11 +62,11 @@ function drawRects() {
   xCenterYellow = (xPosYellow + xPosYellow + sizeYellow) / 2
   yCenterYellow = (yPosYellow + yPosYellow + sizeYellow) / 2
 
-  requestAnimationFrame(drawRects)
+  requestAnimationFrame(drawRect)
 }
 
 // Då respektive kvadrat kommer till en ytterkant ska de studsa
-function checkBounce() {
+function isOnGround() {
   if (xPosRed < 0 || xPosRed > canvas.width - sizeRed) {
     dxRed = -dxRed
   }
